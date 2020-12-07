@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="Calculadora WPF+XAML" Height="525" Width="350" Icon="/calcular.png" Background="#FF1F1F1F">
 
+
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -26,133 +27,131 @@
 
         <Label Content=""
                x:Name="ContaLbl"
-               HorizontalAlignment="Right" 
-               VerticalAlignment="Bottom"
+               Style="{StaticResource contaLbl}"
                Grid.Column="0"
-               Grid.Row="0"
-               Grid.ColumnSpan="4"
-               />
+               Grid.Row="0"/>
 
         <Label Content="0" 
                x:Name="resultLb"
-               HorizontalAlignment="Right" 
-               VerticalAlignment="Center"
-               FontSize="60" 
+               Style="{StaticResource result}"
                Grid.Column="0"
-               Grid.Row="1"
-               Grid.ColumnSpan="4"/>
+               Grid.Row="1"/>
+        
         <Button Content="AC" 
                 x:Name="ACBtn"
                 Click="ACBtn_Click"
-                Background="{StaticResource outBack}"
-                Foreground="{StaticResource outFore}"
+                Style="{StaticResource out}"
                 Grid.Row="2"/>
 
         <Button Content="±"
                 x:Name="NegBtn"
                 Click="NegBtn_Click"
-                Background="{StaticResource outBack}"
-                Foreground="{StaticResource outFore}"
+                Style="{StaticResource out}"
                 Grid.Row="2"
                 Grid.Column="1"/>
 
         <Button Content="%"
                 x:Name="PCentBtn"
                 Click="PCentBtn_Click"
-                Background="{StaticResource outBack}"
-                Foreground="{StaticResource outFore}"
+                Style="{StaticResource out}"
                 Grid.Row="2"
                 Grid.Column="2"/>
 
         <Button Content="÷"
                 x:Name="DivBtn"
                 Click="ContaBtn_Click"
-                Background="{StaticResource contBack}"
-                Foreground="{StaticResource contFore}"
+                Style="{StaticResource cont}"
                 Grid.Row="2"
                 Grid.Column="3"/>
 
         <Button Content="7"
                 x:Name="SeteBtn"
                 Click="NumBtn_Click"
+                Style="{StaticResource numBtn}"
                 Grid.Row="3"
                 Grid.Column="0"/>
 
         <Button Content="8"
                 x:Name="OitoBtn"
                 Click="NumBtn_Click"
+                Style="{StaticResource numBtn}"
                 Grid.Row="3"
                 Grid.Column="1"/>
 
         <Button Content="9"
                 x:Name="NoveBtn"
                 Click="NumBtn_Click"
+                Style="{StaticResource numBtn}"
                 Grid.Row="3"
                 Grid.Column="2"/>
 
         <Button Content="x"
                 x:Name="MultiBtn"
                 Click="ContaBtn_Click"
-                Background="{StaticResource contBack}"
-                Foreground="{StaticResource contFore}"
+                Style="{StaticResource cont}"
                 Grid.Row="3"
                 Grid.Column="3"/>
 
         <Button Content="4"
                 x:Name="QuatroBtn"
                 Click="NumBtn_Click"
+                Style="{StaticResource numBtn}"
                 Grid.Row="4"
                 Grid.Column="0"/>
 
         <Button Content="5"
                 x:Name="CincoBtn"
                 Click="NumBtn_Click"
+                Style="{StaticResource numBtn}"
                 Grid.Row="4"
                 Grid.Column="1"/>
 
         <Button Content="6"
                 x:Name="SeisBtn"
                 Click="NumBtn_Click"
+                Style="{StaticResource numBtn}"
                 Grid.Row="4"
                 Grid.Column="2"/>
 
         <Button Content="-"
                 x:Name="MenosBtn"
                 Click="ContaBtn_Click"
-                Background="{StaticResource contBack}"
-                Foreground="{StaticResource contFore}"
+                Style="{StaticResource cont}"
                 Grid.Row="4"
                 Grid.Column="3"/>
 
         <Button Content="1"
                 x:Name="UmBtn"
                 Click="NumBtn_Click"
+                Style="{StaticResource numBtn}"
                 Grid.Row="5"
                 Grid.Column="0"/>
 
         <Button Content="2"
                 x:Name="DoisBtn"
                 Click="NumBtn_Click"
+                Style="{StaticResource numBtn}"
                 Grid.Row="5"
                 Grid.Column="1"/>
 
         <Button Content="3"
                 x:Name="TresBtn"
                 Click="NumBtn_Click"
+                Style="{StaticResource numBtn}"
                 Grid.Row="5"
                 Grid.Column="2"/>
 
         <Button Content="+"
                 x:Name="SomaBtn"
                 Click="ContaBtn_Click"
-                Background="{StaticResource contBack}"
-                Foreground="{StaticResource contFore}"
+                Style="{StaticResource cont}"
                 Grid.Row="5"
                 Grid.Column="3"/>
 
         <Button Content="0"
                 x:Name="ZeroBtn"
                 Click="NumBtn_Click"
+                Style="{StaticResource numBtn}"
                 Grid.Row="6"
                 Grid.Column="0"
                 Grid.ColumnSpan="2"/>
@@ -160,14 +159,14 @@
         <Button Content=","
                 x:Name="DecBtn"
                 Click="DecBtn_Click"
+                Style="{StaticResource numBtn}"
                 Grid.Row="6"
                 Grid.Column="2"/>
 
         <Button Content="="
                 x:Name="IgualBtn"
                 Click="IgualBtn_Click"
-                Background="{StaticResource contBack}"
-                Foreground="{StaticResource contFore}"
+                Style="{StaticResource cont}"
                 Grid.Row="6"
                 Grid.Column="3"/>
 

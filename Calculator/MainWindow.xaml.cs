@@ -21,18 +21,35 @@ namespace Calculator
     {
         double lastNumber, result;
         SelOperador selOperador;
+        int s = 0;
 
         public MainWindow()
         {
             InitializeComponent();
+            selOperador = SelOperador.None;
         }
 
         private void NumBtn_Click(object sender, RoutedEventArgs e)
         {
             int selVal = int.Parse((sender as Button).Content.ToString());
 
-            if (resultLb.Content.ToString() == "0") resultLb.Content = $"{selVal}";
-            else resultLb.Content = $"{resultLb.Content}{selVal}";
+            switch (s)
+            {
+                case 0:
+                    resultLb.Content = $"{selVal}";
+                    ContaLbl.Content = "";
+                    s = 2;
+                    break;
+                case 1:
+                    resultLb.Content = $"{selVal}";
+                    s = 2;
+                    break;
+                case 2:
+                    if (resultLb.Content.ToString() != "0") resultLb.Content = $"{resultLb.Content}{selVal}";
+                    else resultLb.Content = $"{selVal}";
+                    break;
+            }
+           
         }
 
         private void ContaBtn_Click(object sender, RoutedEventArgs e)
@@ -43,6 +60,7 @@ namespace Calculator
             {
                 ContaLbl.Content = lastNumber.ToString() + operador;
                 resultLb.Content = "0";
+                s = 1;
             }
 
             if (sender == SomaBtn) selOperador = SelOperador.Add;
@@ -58,6 +76,7 @@ namespace Calculator
             ContaLbl.Content = "";
             result = 0;
             lastNumber = 0;
+            s = 0;
         }
 
         private void NegBtn_Click(object sender, RoutedEventArgs e)
@@ -77,6 +96,7 @@ namespace Calculator
                 tempNum /= 100;
                 if (lastNumber != 0) tempNum *= lastNumber;
                 resultLb.Content = tempNum.ToString();
+                s = 2;
             }
         }
 
@@ -84,6 +104,7 @@ namespace Calculator
         {
             if(!resultLb.Content.ToString().Contains(","))
             resultLb.Content = $"{resultLb.Content},";
+            s = 2;
         }
 
         
@@ -98,14 +119,20 @@ namespace Calculator
                 
                 switch (selOperador)
                 {
+                    case SelOperador.None:
+                        ContaLbl.Content = "";
+                        break;
                     case SelOperador.Add:
                         result = Conta.Add(lastNumber, newNumber);
+                        resultLb.Content = result.ToString();
                         break;
                     case SelOperador.Sub:
                         result = Conta.Sub(lastNumber, newNumber);
+                        resultLb.Content = result.ToString();
                         break;
                     case SelOperador.Mult:
                         result = Conta.Mult(lastNumber, newNumber);
+                        resultLb.Content = result.ToString();
                         break;
                     case SelOperador.Div:
                         result = Conta.Div(lastNumber, newNumber);
@@ -113,9 +140,12 @@ namespace Calculator
                         {
                             ContaLbl.Content = "";
                         }
+                        resultLb.Content = result.ToString();
                         break;
+                        
                 }
-                resultLb.Content = result.ToString();
+                selOperador = SelOperador.None;
+                s = 0;
             }
 
         }
@@ -123,6 +153,7 @@ namespace Calculator
 
     public enum SelOperador
     {
+        None,
         Add,
         Sub,
         Mult,
